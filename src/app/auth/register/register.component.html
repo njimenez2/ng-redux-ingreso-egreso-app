@@ -8,10 +8,10 @@
 
             <div class="form-group">
               <div class="input-group">
-                <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre">
+                <input formControlName="name" type="text" class="form-control" placeholder="Nombre">
                 <div class="input-group-append">
                     <span class="input-group-text">
-                      <i *ngIf="validInput('nombre')" class="fa fa-check-circle"></i>
+                      <i *ngIf="validInput('name')" class="fa fa-check-circle"></i>
                     </span>
                 </div>
               </div>
@@ -19,10 +19,10 @@
 
             <div class="form-group">
               <div class="input-group">
-                <input type="email" formControlName="correo" class="form-control" placeholder="Correo">
+                <input type="email" formControlName="mail" class="form-control" placeholder="Correo">
                 <div class="input-group-append">
                     <span class="input-group-text">
-                      <i *ngIf="validInput('correo')" class="fa fa-check-circle"></i>
+                      <i *ngIf="validInput('mail')" class="fa fa-check-circle"></i>
                     </span>
                 </div>
               </div>
@@ -42,8 +42,16 @@
             <div class="form-group">
               <button type="submit"
                       [disabled]="!formGroup.valid"
+                      *ngIf="!isLoading"
                       class="btn btn-primary submit-btn btn-block">
                 Crear cuenta
+              </button>
+              <button [disabled]="true"
+                      *ngIf="isLoading"
+                      type="submit"
+                      class="btn btn-primary submit-btn btn-block">
+                <i class="fa fa-spin fa-sync"></i>
+                Espere...
               </button>
             </div>
             <div class="text-block text-center my-3">

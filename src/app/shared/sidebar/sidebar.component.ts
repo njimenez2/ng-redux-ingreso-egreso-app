@@ -1,23 +1,38 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {FirebaseAuthService} from '../../firebase/services/firebase-auth.service';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../app.reducer';
+import {Subscription} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
+  userSubcriber: Subscription;
+  userName: string;
 
-  constructor(private authService: AuthService,
+  constructor(private firebaseAuthService: FirebaseAuthService,
+              private store: Store<AppState>,
               private router: Router) {
   }
 
   ngOnInit(): void {
+   this.userSubcriber = this.store.select('auth').pipe(
+      filter(({user}) => user != null)
+    ).subscribe(({user}) => {
+      this.userName = user.name;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.userSubcriber.unsubscribe();
   }
 
   logout(): void {
-    this.authService.logout()
+    this.firebaseAuthService.signOut()
       .then(() => this.router.navigate(['/login']));
 
   }

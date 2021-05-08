@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  home: '/login',
   firebase: {
     apiKey: 'AIzaSyA090gxpDqEaSLc8lVVRuRJtdbAsQ2GtBo',
     authDomain: 'ng-redux-ingreso-egreso-app.firebaseapp.com',

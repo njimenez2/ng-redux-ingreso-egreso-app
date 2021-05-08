@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {AuthService} from './services/auth.service';
+import {UsuarioService} from './services/usuario.service';
+
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,9 @@ import {AuthService} from './services/auth.service';
 export class AppComponent {
   title = 'ingreso-egreso';
 
-  constructor(private authService: AuthService) {
-    this.authService.initAuthListener();
+  constructor(private usuarioService: UsuarioService) {
+
+    this.usuarioService.userAuthListener();
   }
 
 }

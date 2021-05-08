@@ -1,10 +1,13 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseformComponent} from '../../shared/baseform/baseform.component';
-import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../app.reducer';
+import {stopLoading} from '../../shared/ui.actions';
+import {UsuarioService} from '../../services/usuario.service';
 
-
+//Todo Crear directiva para loading del boton
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,9 +16,10 @@ import {Router} from '@angular/router';
 export class LoginComponent extends BaseformComponent {
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService,
+              private usuarioService: UsuarioService,
+              protected store: Store<AppState>,
               private router: Router) {
-    super();
+    super(store);
   }
 
   init(): void {
@@ -23,18 +27,25 @@ export class LoginComponent extends BaseformComponent {
       correo: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+
+
   }
 
   login(): void {
     if (this.formGroup.invalid) {
       return;
     }
+    this.formIsLoading();
     const {correo, password} = this.formGroup.value;
-    this.authService.loginUsuario(correo, password)
+    this.usuarioService.userLogin(correo, password)
       .then(credenciales => {
+        this.formStopLoading();
         this.router.navigate(['/']);
       })
-      .catch(error => this.error('Error', error.message));
+      .catch(error => {
+        this.msg('Error', error.message, 'error');
+        this.store.dispatch(stopLoading());
+      });
 
   }
 }
