@@ -24,7 +24,7 @@ import {dashboardReducer} from '../dashboard/dashboard.reducer';
   imports: [
     CommonModule,
     StoreModule.forFeature('ingresoEgreso', ingresoEgresoReducer),
-    StoreModule.forFeature('dashboard23', dashboardReducer),
+    StoreModule.forFeature('dashboard', dashboardReducer),
     ReactiveFormsModule,
     SharedModule,
     ChartsModule,
