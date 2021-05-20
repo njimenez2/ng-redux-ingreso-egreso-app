@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FirebaseAuthService} from '../../firebase/services/firebase-auth.service';
 import {Store} from '@ngrx/store';
-import {AppState} from '../../app.reducer';
+import {AppState} from '../../store/app.reducer';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 

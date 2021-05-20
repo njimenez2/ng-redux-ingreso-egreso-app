@@ -18,7 +18,7 @@ import {AppComponent} from './app.component';
 
 
 
-import {appReducers} from './app.reducer';
+import {appReducers} from './store/app.reducer';
 
 
 import {AuthModule} from './auth/auth.module';

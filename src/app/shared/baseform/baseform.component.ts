@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import Swal, {SweetAlertIcon} from 'sweetalert2';
 import {Store} from '@ngrx/store';
-import {AppState} from '../../app.reducer';
+import {AppState} from '../../store/app.reducer';
 import {Subscription} from 'rxjs';
 import {isLoading, stopLoading} from '../ui.actions';
 

@@ -4,7 +4,6 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import firebase from 'firebase';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {unSetUser} from '../../auth/auth.actions';
 
 @Injectable({
   providedIn: 'root'

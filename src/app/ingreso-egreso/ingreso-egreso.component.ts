@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
 import {BaseformComponent} from '../shared/baseform/baseform.component';
 import {Store} from '@ngrx/store';
-import {AppState} from '../app.reducer';
+import {AppState} from '../store/app.reducer';
 import {FormBuilder, Validators} from '@angular/forms';
 import {IngresoEgresoService} from '../services/ingreso-egreso.service';
 import {IngresoEgreso} from '../models/ingreso-egreso.model';
 import {filter} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
+import {selectAuthUserId} from '../auth/store/selectors';
 
 @Component({
   selector: 'app-ingreso-egreso',
@@ -18,20 +19,20 @@ export class IngresoEgresoComponent extends BaseformComponent {
   _userui: string;
   userSubcription: Subscription;
 
+
   constructor(protected store: Store<AppState>,
               private formBuilder: FormBuilder,
               private ingresoEgresoService: IngresoEgresoService) {
     super(store);
-    this.userSubcription = this.store.select('auth').pipe(
-      filter(auth => auth.user != null)
-    ).subscribe(user => {
-      this._userui = user.user.id;
 
-    });
   }
 
 
   init(): void {
+    this.userSubcription = this.store.select(selectAuthUserId).subscribe(userid => {
+      this._userui = userid;
+    });
+
     this.formGroup = this.formBuilder.group({
       monto: ['', Validators.required],
       descripcion: ['', Validators.required]
@@ -39,7 +40,7 @@ export class IngresoEgresoComponent extends BaseformComponent {
   }
 
   destroy(): void {
-    this.userSubcription.unsubscribe();
+    this.userSubcription?.unsubscribe();
   }
 
   submit() {

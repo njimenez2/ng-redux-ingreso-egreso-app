@@ -4,7 +4,8 @@ import {IngresoEgreso} from '../../models/ingreso-egreso.model';
 
 import {ChartType} from 'chart.js';
 import {Label, MultiDataSet} from 'ng2-charts';
-import {StateWithIngresoEgreso} from '../ingreso-egreso.reducer';
+import {StateWithIngresoEgreso} from '../store/reducers/ingreso-egreso.reducer';
+import {selectIngresoEgreso} from '../store/selectors';
 
 @Component({
   selector: 'app-estadistica',
@@ -26,7 +27,7 @@ export class EstadisticaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select('ingresoEgreso').subscribe(({items}) => {
+    this.store.select(selectIngresoEgreso).subscribe((items) => {
         this.calcularEstadisticas(items);
       }
     );

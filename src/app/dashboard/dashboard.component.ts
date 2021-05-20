@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {filter} from 'rxjs/operators';
 import {Store} from '@ngrx/store';
-import {AppState} from '../app.reducer';
+import {AppState} from '../store/app.reducer';
 import {Subscription} from 'rxjs';
 import {IngresoEgresoService} from '../services/ingreso-egreso.service';
-import {setItem} from '../ingreso-egreso/ingreso-egreso.actios';
+import {setItem} from '../ingreso-egreso/store/actions/ingreso-egreso.actios';
 
 @Component({
   selector: 'app-dashboard',

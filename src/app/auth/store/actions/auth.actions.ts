@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {User} from '../firebase/models/User';
+import {User} from '../../../firebase/models/User';
 
 export const setUser = createAction(
   '[AUTH Component] setUser',

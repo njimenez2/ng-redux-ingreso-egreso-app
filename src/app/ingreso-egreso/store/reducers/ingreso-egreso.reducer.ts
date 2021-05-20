@@ -1,17 +1,17 @@
 import {createReducer, on} from '@ngrx/store';
-import {IngresoEgreso} from '../models/ingreso-egreso.model';
-import {setItem, unSetItem} from './ingreso-egreso.actios';
-import {AppState} from '../app.reducer';
+import {IngresoEgreso} from '../../../models/ingreso-egreso.model';
+import {setItem, unSetItem} from '../actions/ingreso-egreso.actios';
+import {AppState} from '../../../store/app.reducer';
 
 
-export interface State {
+export interface IngresoEgresoState {
   items: IngresoEgreso[];
 }
 export interface StateWithIngresoEgreso  extends AppState{
-  ingresoEgreso: State;
+  ingresoEgreso: IngresoEgresoState;
 }
 
-export const initialState: State = {
+export const initialState: IngresoEgresoState = {
   items: [],
 };
 

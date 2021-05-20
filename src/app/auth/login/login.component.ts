@@ -3,7 +3,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {BaseformComponent} from '../../shared/baseform/baseform.component';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {AppState} from '../../app.reducer';
+import {AppState} from '../../store/app.reducer';
 import {stopLoading} from '../../shared/ui.actions';
 import {UsuarioService} from '../../services/usuario.service';
 

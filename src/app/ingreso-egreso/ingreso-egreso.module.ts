@@ -10,8 +10,9 @@ import {ChartsModule} from 'ng2-charts';
 import {DashboardRoutingModule} from '../dashboard/dashboard-routing.module';
 import {DashboardComponent} from '../dashboard/dashboard.component';
 import {StoreModule} from '@ngrx/store';
-import {ingresoEgresoReducer} from './ingreso-egreso.reducer';
-import {dashboardReducer} from '../dashboard/dashboard.reducer';
+import {ingresoEgresoReducer} from './store/reducers/ingreso-egreso.reducer';
+import {IngresoEgresoKey} from './store/selectors';
+
 
 
 @NgModule({
@@ -23,8 +24,7 @@ import {dashboardReducer} from '../dashboard/dashboard.reducer';
   ],
   imports: [
     CommonModule,
-    StoreModule.forFeature('ingresoEgreso', ingresoEgresoReducer),
-    StoreModule.forFeature('dashboard', dashboardReducer),
+    StoreModule.forFeature(IngresoEgresoKey, ingresoEgresoReducer),
     ReactiveFormsModule,
     SharedModule,
     ChartsModule,

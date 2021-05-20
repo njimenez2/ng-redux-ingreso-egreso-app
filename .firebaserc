@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "ng-redux-ingreso-egreso-app": {
-      "hosting": {
-        "ingreso-egreso": [
-          "ng-redux-ingreso-egreso-app"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "ng-redux-ingreso-egreso-app"
   }

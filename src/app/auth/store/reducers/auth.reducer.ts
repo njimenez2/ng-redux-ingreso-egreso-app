@@ -1,13 +1,13 @@
 import {createReducer, on} from '@ngrx/store';
-import {setUser, unSetUser} from './auth.actions';
-import {User} from '../firebase/models/User';
+import {User} from '../../../firebase/models/User';
+import {setUser, unSetUser} from '../actions';
 
 
-export interface State {
+export interface UserState {
   user: User;
 }
 
-export const initialState: State = {
+export const initialState: UserState = {
   user: null
 };
 

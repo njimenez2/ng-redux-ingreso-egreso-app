@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Store} from '@ngrx/store';
-import {AppState} from '../app.reducer';
+import {AppState} from '../store/app.reducer';
 import {FirebaseService} from '../firebase/services/firebase.service';
 
 @Injectable({
